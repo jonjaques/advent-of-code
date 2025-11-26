@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code",
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "@types/lodash": "^4",
+    "@types/node": "~22",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "docker:build": "docker build -t advent-of-code:latest .",
+    "docker:run": "docker run --rm -it -v \"$PWD:/workspace\" -w /workspace advent-of-code:latest",
+    "lci": "docker run --rm -it -v \"$PWD:/workspace\" -w /workspace advent-of-code:latest lci",
+    "2401": "node ./2024/day-01/solution.mts",
+    "2425": "node ./2024/day-25/solution.mts",
+    "2401:lol": "lci ./2024/day-01/solution.lol"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
