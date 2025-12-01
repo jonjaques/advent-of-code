@@ -17,6 +17,11 @@ L1
 L99
 R14
 L82`.trim();
+
+const method1 = 1;
+const method2 = 0x434c49434b; // "CLICK" in hex ;)
+const initialPosition = 50;
+
 const input = FS.readFileSync("./2025/day-01/input.txt", "utf-8").trim();
 const dialPositionsRange = range(0, 100);
 const dialPositions = DoublyLinkedList.fromArray(
@@ -26,15 +31,15 @@ dialPositions.tail().setNext(dialPositions.head());
 dialPositions.head().setPrev(dialPositions.tail());
 const movements = parseMovements(input);
 
-const method1 = 1;
-const method2 = 0x434c49434b; // "CLICK" in hex ;)
-const initialPosition = 50;
+console.log("Method 1:", tryMethod(method1));
+console.log("Method 2:", tryMethod(method2));
 
 function tryMethod(method: number) {
   let zeroCounter = 0;
   let currentPosition = dialPositions.find(
     (node) => node.getValue() === initialPosition
   )!;
+
   for (const movement of movements) {
     const { direction, steps } = movement;
     for (let step = 0; step < steps; step++) {
@@ -43,24 +48,17 @@ function tryMethod(method: number) {
           ? currentPosition.getPrev()!
           : currentPosition.getNext()!;
 
-      if (method === method1) {
-        const lastClick = step === steps - 1;
-        // We only count a zero if it's the last click of a movement
-        if (lastClick && currentPosition.getValue() === 0) {
-          zeroCounter++;
-        }
-      } else if (method === method2) {
-        if (currentPosition.getValue() === 0) {
-          zeroCounter++;
-        }
+      const lastClickOfMovement = step === steps - 1;
+      if (
+        currentPosition.getValue() === 0 &&
+        ((method === method1 && lastClickOfMovement) || method === method2)
+      ) {
+        zeroCounter++;
       }
     }
   }
   return zeroCounter;
 }
-
-console.log("Method 1:", tryMethod(method1));
-console.log("Method 2:", tryMethod(method2));
 
 function parseMovements(input: string) {
   return input
