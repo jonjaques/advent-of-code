@@ -5,6 +5,13 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+"@datastructures-js/linked-list@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@datastructures-js/linked-list@npm:6.1.4"
+  checksum: 10c0/ada6f9916f412641c2866f2b87205123f571473533306708f5e035970ee0ce77389aaa24aab357a851df8c7263d4ee9bc8d007ae6574085cb2f9f06a955ccb2b
+  languageName: node
+  linkType: hard
+
 "@types/lodash@npm:^4":
   version: 4.17.21
   resolution: "@types/lodash@npm:4.17.21"
@@ -25,6 +32,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "advent-of-code@workspace:."
   dependencies:
+    "@datastructures-js/linked-list": "npm:^6.1.4"
     "@types/lodash": "npm:^4"
     "@types/node": "npm:~22"
     lodash: "npm:^4.17.21"

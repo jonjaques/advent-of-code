@@ -7,14 +7,16 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
+    "2401": "node ./2024/day-01/solution.mts",
+    "2425": "node ./2024/day-25/solution.mts",
+    "2501": "node ./2025/day-01/solution.mts",
     "docker:build": "docker build -t advent-of-code:latest .",
     "docker:run": "docker run --rm -it -v \"$PWD:/workspace\" -w /workspace advent-of-code:latest",
     "lci": "docker run --rm -it -v \"$PWD:/workspace\" -w /workspace advent-of-code:latest lci",
-    "2401": "node ./2024/day-01/solution.mts",
-    "2425": "node ./2024/day-25/solution.mts",
     "2401:lol": "lci ./2024/day-01/solution.lol"
   },
   "dependencies": {
+    "@datastructures-js/linked-list": "^6.1.4",
     "lodash": "^4.17.21"
   }
 }
